@@ -1,0 +1,23 @@
+# permissions for end users to view kubecrons.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kubecron
+    app.kubernetes.io/managed-by: kustomize
+  name: kubecron-viewer-role
+rules:
+- apiGroups:
+  - webapp.tutorial.kubebuilder.io
+  resources:
+  - kubecrons
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - webapp.tutorial.kubebuilder.io
+  resources:
+  - kubecrons/status
+  verbs:
+  - get
