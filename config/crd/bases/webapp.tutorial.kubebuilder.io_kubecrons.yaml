@@ -1,0 +1,54 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: kubecrons.webapp.tutorial.kubebuilder.io
+spec:
+  group: webapp.tutorial.kubebuilder.io
+  names:
+    kind: Kubecron
+    listKind: KubecronList
+    plural: kubecrons
+    singular: kubecron
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Kubecron is the Schema for the kubecrons API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KubecronSpec defines the desired state of Kubecron
+            properties:
+              foo:
+                description: Foo is an example field of Kubecron. Edit kubecron_types.go
+                  to remove/update
+                type: string
+            type: object
+          status:
+            description: KubecronStatus defines the observed state of Kubecron
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
